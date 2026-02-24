@@ -16,13 +16,25 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS aircraft (
       id TEXT PRIMARY KEY,
-      name TEXT,
-      country TEXT,
-      engine_count INTEGER,
-      intake_count INTEGER,
-      vertical_stabilizers INTEGER,
-      has_canards INTEGER,
-      wing_type TEXT,
+name TEXT,
+country TEXT,
+manufacturer TEXT,
+first_flight INTEGER,
+role TEXT,
+
+engine_count INTEGER,
+intake_count INTEGER,
+vertical_stabilizers INTEGER,
+has_canards INTEGER,
+wing_type TEXT,
+stealth INTEGER,
+
+max_speed REAL,
+combat_range INTEGER,
+length REAL,
+wingspan REAL,
+height REAL,
+weapons TEXT
       stealth INTEGER
     )
   `);

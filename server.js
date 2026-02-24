@@ -67,14 +67,9 @@ weapons TEXT
 1.8,3700,15.3,10.9,5.3,
 'MICA; Meteor; 30mm cannon')
 `);
-    
- 
-});
-
-// Matching endpoint
+// Matching endpoin
 app.post('/match', (req, res) => {
-  const filters = req.body;app.get('/search', (req, res) => {
-  const name = req.query.name;
+  const filters = req.body;
 
   const query = `
     SELECT *,
@@ -101,9 +96,13 @@ app.post('/match', (req, res) => {
   ];
 
   db.all(query, values, (err, rows) => {
-    if (err) return res.status(500).json(err);
-    res.json(rows);
-  });
+    if (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+    res.json(rows);   
+ 
+});// Matching endpoint
 });
 
 app.use(express.static(path.join(__dirname, 'public')));

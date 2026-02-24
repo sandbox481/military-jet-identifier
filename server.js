@@ -29,7 +29,6 @@ db.run(`
     internal_weapons_bay INTEGER,
     heavy_ground_attack INTEGER
   )
-`);
   );
 
   db.run(`INSERT OR IGNORE INTO aircraft VALUES

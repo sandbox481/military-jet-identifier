@@ -10,11 +10,9 @@ app.use(cors());
 app.use(express.json());
 
 // Create / Open Database
-const db = new sqlite3.Database(':memory:');
-db.serialize(() => {
-db.run(`
- db.serialize(() => {
+const db = new sqlite3.Database('./aircraft.db');
 
+db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS aircraft (
       id TEXT PRIMARY KEY,
@@ -25,24 +23,21 @@ db.run(`
       vertical_stabilizers INTEGER,
       has_canards INTEGER,
       wing_type TEXT,
-      stealth INTEGER,
-      guns INTEGER,
-      bvr_capable INTEGER,
-      guided_bombs INTEGER,
-      internal_weapons_bay INTEGER,
-      heavy_ground_attack INTEGER
+      stealth INTEGER
     )
   `);
 
   db.run(`
     INSERT OR IGNORE INTO aircraft VALUES
-    ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1,1,1,1,1,0),
-    ('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1,1,1,1,1,0),
-    ('j20','Chengdu J-20','China',2,2,2,1,'delta',1,1,1,1,1,0),
-    ('rafale','Dassault Rafale','France',2,2,1,1,'delta',0,1,1,1,0,0),
-    ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0,1,1,1,0,0)
+    ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1),
+    ('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1),
+    ('j20','Chengdu J-20','China',2,2,2,1,'delta',1),
+    ('rafale','Dassault Rafale','France',2,2,1,1,'delta',0),
+    ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0)
   `);
 });
+
+// Matching endpoint
 app.post('/match', (req, res) => {
   const filters = req.body;
 

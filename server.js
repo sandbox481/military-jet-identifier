@@ -34,8 +34,8 @@ combat_range INTEGER,
 length REAL,
 wingspan REAL,
 height REAL,
-weapons TEXT
-      stealth INTEGER
+weapons,TEXT
+      
     )
   `);
 

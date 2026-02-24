@@ -14,18 +14,25 @@ const db = new sqlite3.Database('./aircraft.db');
 
 db.serialize(() => {
   db.run(`
-    CREATE TABLE IF NOT EXISTS aircraft (
-      id TEXT PRIMARY KEY,
-      name TEXT,
-      country TEXT,
-      engine_count INTEGER,
-      intake_count INTEGER,
-      vertical_stabilizers INTEGER,
-      has_canards INTEGER,
-      wing_type TEXT,
-      stealth INTEGER
-    )
-  `);
+db.run(`
+  CREATE TABLE IF NOT EXISTS aircraft (
+    id TEXT PRIMARY KEY,
+    name TEXT,
+    country TEXT,
+    engine_count INTEGER,
+    intake_count INTEGER,
+    vertical_stabilizers INTEGER,
+    has_canards INTEGER,
+    wing_type TEXT,
+    stealth INTEGER,
+    guns INTEGER,
+    bvr_capable INTEGER,
+    guided_bombs INTEGER,
+    internal_weapons_bay INTEGER,
+    heavy_ground_attack INTEGER
+  )
+`);
+  );
 
   db.run(`INSERT OR IGNORE INTO aircraft VALUES
     ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1),

@@ -41,66 +41,36 @@ weapons TEXT
 
   db.run(`
   INSERT OR IGNORE INTO aircraft VALUES
+db.run(`
+INSERT OR IGNORE INTO aircraft VALUES
 
-  -- USA
-  ('f4','F-4 Phantom II','USA',2,2,1,0,'swept',0),
-  ('f14','F-14 Tomcat','USA',2,2,2,0,'variable',0),
-  ('f15','F-15 Eagle','USA',2,2,2,0,'swept',0),
-  ('f16','F-16 Fighting Falcon','USA',1,1,1,0,'blended',0),
-  ('f18','F/A-18 Hornet','USA',2,2,2,0,'blended',0),
-  ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1),
-  ('f35','F-35 Lightning II','USA',1,1,2,0,'blended_stealth',1),
+('f22','F-22 Raptor','USA','Lockheed Martin',1997,'Air Superiority',
+2,2,2,0,'trapezoidal',1,
+2.25,2960,18.9,13.6,5.1,
+'AIM-120 AMRAAM; AIM-9 Sidewinder; M61A2 20mm cannon'),
 
-  -- Russia / USSR
-  ('mig21','MiG-21','USSR',1,1,1,0,'delta',0),
-  ('mig29','MiG-29','Russia',2,2,2,0,'blended',0),
-  ('su27','Su-27 Flanker','Russia',2,2,2,0,'blended',0),
-  ('su35','Su-35','Russia',2,2,2,0,'blended',0),
-  ('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1),
+('f35','F-35 Lightning II','USA','Lockheed Martin',2006,'Multirole',
+1,2,2,0,'trapezoidal',1,
+1.6,2200,15.7,10.7,4.4,
+'AIM-120 AMRAAM; AIM-9X; GAU-22/A 25mm cannon'),
 
-  -- China
-  ('j7','Chengdu J-7','China',1,1,1,0,'delta',0),
-  ('j10','Chengdu J-10','China',1,1,1,1,'delta',0),
-  ('j11','Shenyang J-11','China',2,2,2,0,'blended',0),
-  ('j20','Chengdu J-20','China',2,2,2,1,'delta',1),
+('su57','Su-57','Russia','Sukhoi',2010,'Multirole Fighter',
+2,2,2,0,'blended',1,
+2.0,3500,20.1,14.1,4.6,
+'R-77; R-74; 30mm cannon'),
 
-  -- UK
-  ('lightning','English Electric Lightning','UK',2,2,1,0,'swept',0),
-  ('harrier','Harrier','UK',1,2,1,0,'high',0),
-  ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0),
+('j20','Chengdu J-20','China','Chengdu Aerospace',2011,'Stealth Fighter',
+2,2,2,0,'delta',1,
+2.0,3400,20.4,13.5,4.5,
+'PL-15; PL-10; 30mm cannon'),
 
-  -- France
-  ('mirage3','Mirage III','France',1,1,1,0,'delta',0),
-  ('mirage2000','Mirage 2000','France',1,1,1,0,'delta',0),
-  ('rafale','Dassault Rafale','France',2,2,1,1,'delta',0),
-
-  -- Sweden
-  ('draken','Saab 35 Draken','Sweden',1,2,1,0,'double_delta',0),
-  ('viggen','Saab 37 Viggen','Sweden',1,1,1,0,'delta',0),
-  ('gripen','Saab JAS 39 Gripen','Sweden',1,1,1,1,'delta',0),
-
-  -- Germany
-  ('tornado','Panavia Tornado','Germany',2,2,2,0,'variable',0),
-
-  -- Japan
-  ('f2','Mitsubishi F-2','Japan',1,1,1,0,'blended',0),
-
-  -- India
-  ('tejas','HAL Tejas','India',1,1,1,0,'delta',0),
-
-  -- Israel
-  ('kfir','IAI Kfir','Israel',1,1,1,1,'delta',0),
-
-  -- Pakistan
-  ('jf17','JF-17 Thunder','Pakistan',1,1,1,0,'blended',0)
+('rafale','Dassault Rafale','France','Dassault Aviation',1986,'Multirole',
+2,2,1,1,'delta',0,
+1.8,3700,15.3,10.9,5.3,
+'MICA; Meteor; 30mm cannon')
 `);
     
-    ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1),
-    ('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1),
-    ('j20','Chengdu J-20','China',2,2,2,1,'delta',1),
-    ('rafale','Dassault Rafale','France',2,2,1,1,'delta',0),
-    ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0)
-  `);
+ 
 });
 
 // Matching endpoint

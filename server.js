@@ -43,7 +43,6 @@ db.run(`
     ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0,1,1,1,0,0)
   `);
 });
-}); 
 // Matching endpoint
 app.post('/match', (req, res) => {
   const filters = req.body;

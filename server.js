@@ -101,8 +101,7 @@ app.post('/match', (req, res) => {
       return res.status(500).json(err);
     }
     res.json(rows);   
- 
-});// Matching endpoint
+ });// Matching endpoint
 });
 
 app.use(express.static(path.join(__dirname, 'public')));

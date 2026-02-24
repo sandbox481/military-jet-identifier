@@ -44,7 +44,7 @@ db.run(`
   `);
 });
 // Matching endpoint
-app.post('/match', (req, res) => {
+app.post('/match', (req, res) => {});
   const filters = req.body;
 
   const query = `

@@ -1,36 +1,115 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Military Jet Identifier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      background-color: #0f172a;
+      color: white;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    button, select, input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #1e293b;
+      border-radius: 10px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>Military Jet Identifier</h1>
 
-  <h2>Military Jet Identifier</h2>
+    <!<select id="engine_count">
+  <option value="1">1 Engine</option>
+  <option value="2">2 Engines</option>
+</select>
 
-  <button onclick="identify()">Test Stealth Fighter</button>
+<select id="stealth">
+  <option value="1">Stealth</option>
+  <option value="0">Non-Stealth</option>
+</select>
 
-  <pre id="result"></pre>
+<button onclick="matchAircraft()">Identify Aircraft</button>
+
+<div id="results"></div>
 
 <script>
-async function identify() {
-    const response = await fetch("/match", {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({
-            engine_count: 2,
-            intake_count: 2,
-            vertical_stabilizers: 2,
-            has_canards: 0,
-            wing_type: "blended_stealth",
-            stealth: 1
-        })
-    });
+async function matchAircraft() {
+  const engine_count = parseInt(document.getElementById("engine_count").value);
+  const stealth = parseInt(document.getElementById("stealth").value);
 
-    const data = await response.json();
-    document.getElementById("result").innerText =
-        JSON.stringify(data, null, 2);
+  const response = await fetch("/match", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      engine_count: engine_count,
+      intake_count: 2,
+      vertical_stabilizers: 2,
+      has_canards: 0,
+      wing_type: "trapezoidal",
+      stealth: stealth
+    })
+  });
+
+  const data = await response.json();
+
+  const resultsDiv = document.getElementById("results");
+  resultsDiv.innerHTML = "";
+
+  data.forEach(jet => {
+    resultsDiv.innerHTML += `
+      <div class="result">
+        <h3>${jet.name}</h3>
+        <p><strong>Country:</strong> ${jet.country}</p>
+        <p><strong>Manufacturer:</strong> ${jet.manufacturer}</p>
+        <p><strong>Role:</strong> ${jet.role}</p>
+        <p><strong>Max Speed:</strong> Mach ${jet.max_speed}</p>
+        <p><strong>Combat Range:</strong> ${jet.combat_range} km</p>
+        <p><strong>Length:</strong> ${jet.length} m</p>
+        <p><strong>Wingspan:</strong> ${jet.wingspan} m</p>
+        <p><strong>Height:</strong> ${jet.height} m</p>
+        <p><strong>Weapons:</strong> ${jet.weapons}</p>
+      </div>
+    `;
+  });
 }
-</script>
+</script>-- Your existing form goes here -->
 
+  </div>
 </body>
 </html>

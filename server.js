@@ -12,7 +12,6 @@ app.use(express.json());
 // Create / Open Database
 const db = new sqlite3.Database(':memory:');
 db.serialize(() => {
-  db.run(`
 db.run(`
   CREATE TABLE IF NOT EXISTS aircraft (
     id TEXT PRIMARY KEY,

@@ -10,8 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Create / Open Database
-const db = new sqlite3.Database('./aircraft.db');
-
+const db = new sqlite3.Database(':memory:');
 db.serialize(() => {
   db.run(`
 db.run(`
@@ -35,12 +34,12 @@ db.run(`
   );
 
   db.run(`INSERT OR IGNORE INTO aircraft VALUES
-    ('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1),
-    ('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1),
-    ('j20','Chengdu J-20','China',2,2,2,1,'delta',1),
-    ('rafale','Dassault Rafale','France',2,2,1,1,'delta',0),
-    ('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0)
-  `);
+('f22','F-22 Raptor','USA',2,2,2,0,'blended_stealth',1,1,1,1,1,0),
+('su57','Sukhoi Su-57','Russia',2,2,2,0,'blended_stealth',1,1,1,1,1,0),
+('j20','Chengdu J-20','China',2,2,2,1,'delta',1,1,1,1,1,0),
+('rafale','Dassault Rafale','France',2,2,1,1,'delta',0,1,1,1,0,0),
+('typhoon','Eurofighter Typhoon','UK',2,2,1,1,'delta',0,1,1,1,0,0)
+`);
 });
 
 // Matching endpoint

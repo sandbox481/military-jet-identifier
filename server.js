@@ -41,8 +41,6 @@ weapons TEXT
 
   db.run(`
   INSERT OR IGNORE INTO aircraft VALUES
-db.run(`
-INSERT OR IGNORE INTO aircraft VALUES
 
 ('f22','F-22 Raptor','USA','Lockheed Martin',1997,'Air Superiority',
 2,2,2,0,'trapezoidal',1,

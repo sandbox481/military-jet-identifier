@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Military Jet Identifier</title>
+</head>
+<body>
+
+  <h2>Military Jet Identifier</h2>
+
+  <button onclick="identify()">Test Stealth Fighter</button>
+
+  <pre id="result"></pre>
+
+<script>
+async function identify() {
+    const response = await fetch("/match", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            engine_count: 2,
+            intake_count: 2,
+            vertical_stabilizers: 2,
+            has_canards: 0,
+            wing_type: "blended_stealth",
+            stealth: 1
+        })
+    });
+
+    const data = await response.json();
+    document.getElementById("result").innerText =
+        JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>

@@ -73,7 +73,8 @@ weapons TEXT
 
 // Matching endpoint
 app.post('/match', (req, res) => {
-  const filters = req.body;
+  const filters = req.body;app.get('/search', (req, res) => {
+  const name = req.query.name;
 
   const query = `
     SELECT *,
